@@ -20,16 +20,19 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         Log.d("TAG","onStart")
+        binding.tvGreeting.text="Mingalarpar2"
     }
 
     override fun onResume() {
         super.onResume()
         Log.d("TAG","onResume")
+        binding.tvGreeting.text="Mingalarpar3"
     }
 
     override fun onPause() {
         super.onPause()
         Log.d("TAG","onPause")
+        binding.tvGreeting.text="Mingalarpar4"
     }
 
     override fun onStop() {
