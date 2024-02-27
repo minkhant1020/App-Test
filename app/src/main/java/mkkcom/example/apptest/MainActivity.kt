@@ -2,12 +2,10 @@ package mkkcom.example.apptest
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.util.Log
-import android.widget.Toast
-import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
+import mkkcom.example.apptest.broadcast.BroadcastActivity
 import mkkcom.example.apptest.databinding.ActivityMainBinding
+import mkkcom.example.apptest.lifecycle.LifecycleActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -32,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         binding.btnLifecycle.setOnClickListener {
             this.goToLifecycleScreen()
         }
-        binding.btnBrocast.setOnClickListener {
+        binding.btnBroadcast.setOnClickListener {
 
             this.goToBroadcastScreen()
         }
@@ -49,13 +47,14 @@ class MainActivity : AppCompatActivity() {
 
     private fun goToLifecycleScreen(){
         // Toast.makeText(this,"Go To Broadcast Receiver",Toast.LENGTH_LONG).show()
-        val intent=Intent(this,LifecycleActivity::class.java)
+        val intent=Intent(this, LifecycleActivity::class.java)
         startActivity(intent)
     }
        private fun goToBroadcastScreen(){
           // Toast.makeText(this,"Go To Broadcast Receiver",Toast.LENGTH_LONG).show()
-           val intent=Intent(this,BroadcastActivity::class.java)
+           val intent=Intent(this, BroadcastActivity::class.java)
            startActivity(intent)
        }
 
-     }
+
+  }

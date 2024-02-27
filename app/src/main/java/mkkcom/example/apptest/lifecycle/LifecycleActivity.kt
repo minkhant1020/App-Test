@@ -1,4 +1,4 @@
-package mkkcom.example.apptest
+package mkkcom.example.apptest.lifecycle
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,7 +9,7 @@ import mkkcom.example.apptest.databinding.ActivityBroadcastBinding
 import mkkcom.example.apptest.databinding.ActivityLifecycleBinding
 
 class LifecycleActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityLifecycleBinding
+   private lateinit var binding: ActivityLifecycleBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.d("TAG","onCreate")
@@ -66,4 +66,4 @@ class LifecycleActivity : AppCompatActivity() {
         super.onRestoreInstanceState(savedInstanceState, persistentState)
         Log.d("TAG"," onRestoreInstanceState")
     }
-}
+      }
