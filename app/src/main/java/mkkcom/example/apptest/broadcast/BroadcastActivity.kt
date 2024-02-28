@@ -6,33 +6,48 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
+import mkkcom.example.apptest.BaseActivity
 import mkkcom.example.apptest.databinding.ActivityBroadcastBinding
 
-class BroadcastActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityBroadcastBinding
+class BroadcastActivity : BaseActivity< ActivityBroadcastBinding>() {
+
+    companion object{
+
+        const val CUSTOM_ACTION_NAME="customBroadcastAction"
+        fun getInstance(context: Context): Intent{
+            return Intent(context,BroadcastActivity::class.java)
+        }
+    }
+
+    override val pageTitle: String get() = "Broadcast Receiver"
+
+    override fun setupViewBinding(layoutInflater: LayoutInflater): ActivityBroadcastBinding {
+        return ActivityBroadcastBinding.inflate(layoutInflater)
+    }
+
 
     private lateinit var timeReceiver: TickTimeReceiver
 
     private lateinit var customReceiver: customReceiver
 
-    private val customActionName="customBroadcastAction"
+
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding=ActivityBroadcastBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        supportActionBar?.title="Broadcast Receiver"
+
+
 
         timeReceiver= TickTimeReceiver()
         customReceiver= customReceiver()
 
         binding.buttonCustomBroadcast.setOnClickListener {
             val intent = Intent()
-            intent.setAction(customActionName)
+            intent.setAction(CUSTOM_ACTION_NAME)
             sendBroadcast(intent)
         }
 
@@ -49,7 +64,7 @@ class BroadcastActivity : AppCompatActivity() {
         registerReceiver(timeReceiver,filter)
 
         val customFilter: IntentFilter=IntentFilter().also {
-            it.addAction(customActionName)
+            it.addAction(CUSTOM_ACTION_NAME)
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             registerReceiver(customReceiver,customFilter, RECEIVER_NOT_EXPORTED)
