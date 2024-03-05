@@ -1,12 +1,11 @@
 package mkkcom.example.apptest
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
-import androidx.appcompat.app.AppCompatActivity
 import mkkcom.example.apptest.broadcast.BroadcastActivity
 import mkkcom.example.apptest.databinding.ActivityMainBinding
 import mkkcom.example.apptest.lifecycle.LifecycleActivity
+import java.util.Date
 
 class MainActivity : BaseActivity< ActivityMainBinding>() {
 
@@ -41,6 +40,9 @@ class MainActivity : BaseActivity< ActivityMainBinding>() {
 
             this.goToBroadcastScreen()
         }
+        binding.btnInTant.setOnClickListener {
+            this.goToIntentActivity()
+        }
 
         //this.showcount()
 
@@ -62,6 +64,13 @@ class MainActivity : BaseActivity< ActivityMainBinding>() {
            val intent= BroadcastActivity.getInstance(this)
            startActivity(intent)
        }
+
+    private fun goToIntentActivity(){
+
+        val intent=IntentActivity.getInstance(this,Date().toString())
+        startActivity(intent)
+
+    }
 
 
   }

@@ -13,6 +13,9 @@
         android:theme="@style/Theme.AppTest"
         tools:targetApi="31">
         <activity
+            android:name=".IntentActivity"
+            android:exported="false" />
+        <activity
             android:name=".lifecycle.LifecycleActivity"
             android:exported="false" />
         <activity
@@ -27,14 +30,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
-        <receiver android:name=".broadcast.BroadcastActivity$AirplaneModeReceiver"
+
+        <receiver
+            android:name=".broadcast.BroadcastActivity$AirplaneModeReceiver"
             android:exported="false">
             <intent-filter>
-                <action android:name="android.intent.action.AIRPLANE_MODE"/>
+                <action android:name="android.intent.action.AIRPLANE_MODE" />
             </intent-filter>
         </receiver>
-
     </application>
 
 </manifest>

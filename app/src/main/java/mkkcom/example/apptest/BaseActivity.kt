@@ -20,6 +20,7 @@ abstract class BaseActivity <VB: ViewBinding> : AppCompatActivity() {
         supportActionBar?.title=pageTitle
         supportActionBar?.setDisplayHomeAsUpEnabled(this !is MainActivity)
 
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -32,4 +33,5 @@ abstract class BaseActivity <VB: ViewBinding> : AppCompatActivity() {
 
         return super.onOptionsItemSelected(item)
     }
+    
 }
