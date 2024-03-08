@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import mkkcom.example.apptest.broadcast.BroadcastActivity
 import mkkcom.example.apptest.databinding.ActivityMainBinding
+import mkkcom.example.apptest.intent.IntentActivity
 import mkkcom.example.apptest.lifecycle.LifecycleActivity
+import mkkcom.example.apptest.taskandbackstack.TaskAndBackStackActivity
 import java.util.Date
 
 class MainActivity : BaseActivity< ActivityMainBinding>() {
@@ -43,6 +45,10 @@ class MainActivity : BaseActivity< ActivityMainBinding>() {
         binding.btnInTant.setOnClickListener {
             this.goToIntentActivity()
         }
+        binding.btnTaskAndBackStack.setOnClickListener {
+            this.goToTaskAndBackStackActivity()
+
+        }
 
         //this.showcount()
 
@@ -67,7 +73,13 @@ class MainActivity : BaseActivity< ActivityMainBinding>() {
 
     private fun goToIntentActivity(){
 
-        val intent=IntentActivity.getInstance(this,Date().toString())
+        val intent= IntentActivity.getInstance(this,Date().toString())
+        startActivity(intent)
+
+    }
+    private fun goToTaskAndBackStackActivity(){
+
+        val intent= TaskAndBackStackActivity.getInstance(this)
         startActivity(intent)
 
     }
