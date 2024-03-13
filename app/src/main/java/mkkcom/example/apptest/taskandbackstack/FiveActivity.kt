@@ -5,34 +5,31 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.widget.Toast
-import mkkcom.example.apptest.BaseActivity
 import mkkcom.example.apptest.R
-import mkkcom.example.apptest.databinding.ActivityTwoBinding
+import mkkcom.example.apptest.databinding.ActivityFiveBinding
 
-class TwoActivity : BaseTaskAndBackstackActivity<ActivityTwoBinding>() {
+class FiveActivity : BaseTaskAndBackstackActivity<ActivityFiveBinding>() {
 
     companion object{
 
 
         fun getInstance(context: Context): Intent {
-            return Intent(context,  TwoActivity::class.java)
+            return Intent(context,  FiveActivity::class.java)
         }
     }
+    override val pageTitle: String
+        get() = "Activity Five"
 
-    override val pageTitle: String get() = "Activity Two"
-
-    override fun setupViewBinding(layoutInflater: LayoutInflater): ActivityTwoBinding {
-       return ActivityTwoBinding.inflate(layoutInflater)
+    override fun setupViewBinding(layoutInflater: LayoutInflater): ActivityFiveBinding {
+        return ActivityFiveBinding.inflate(layoutInflater)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         val menu= binding.menuLayout
 
         this.listenButtonClick(
-            menu.buttonActivityOne,
+           menu.buttonActivityOne,
             menu.buttonActivityTwo,
             menu.buttonActivityThree,
             menu.buttonActivityFour,
@@ -41,7 +38,4 @@ class TwoActivity : BaseTaskAndBackstackActivity<ActivityTwoBinding>() {
 
 
     }
-
-
-
 }

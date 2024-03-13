@@ -1,26 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+
     tools:context=".taskandbackstack.OneActivity">
 
-    <Button
-        android:id="@+id/buttonActivityOne"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/button_go_to_activity_one"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="20dp" />
+    <include
+        android:id="@+id/menu_layout"
+        layout="@layout/task_stack_menu"/>
 
-    <Button
-        android:id="@+id/buttonActivityTwo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/button_go_to_activity_two"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="20dp" />
-
-</LinearLayout>
+</ScrollView>

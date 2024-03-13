@@ -13,8 +13,11 @@
     <string name="button_open_in_map_view">Open in map view</string>
     <string name="button_take_picture">Take picture</string>
     <string name="button_pick_picture">pick picture</string>
-    <string name="button_go_to_activity_one">Go to Activity One</string>
-    <string name="button_go_to_activity_two">Go to Activity Two</string>
+    <string name="button_go_to_activity_one">Activity One(Single Top)</string>
+    <string name="button_go_to_activity_two">Activity Two(Default)</string>
+    <string name="button_activity_three_single_task">Activity Three(Single task)</string>
+    <string name="button_activity_four_single_instance">Activity Four(Single Instance)</string>
+    <string name="button_activity_five_flag_new_task">Activity Five(Flag new Task)</string>
 
 
 </resources>

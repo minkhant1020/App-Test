@@ -1,8 +1,10 @@
 package mkkcom.example.apptest
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
 import mkkcom.example.apptest.databinding.ActivityMainBinding
@@ -22,6 +24,10 @@ abstract class BaseActivity <VB: ViewBinding> : AppCompatActivity() {
 
 
     }
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        Toast.makeText(this, "on New Intent", Toast.LENGTH_LONG).show()
+    }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId){
@@ -33,5 +39,6 @@ abstract class BaseActivity <VB: ViewBinding> : AppCompatActivity() {
 
         return super.onOptionsItemSelected(item)
     }
+
     
 }

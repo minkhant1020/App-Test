@@ -8,22 +8,22 @@ import android.view.LayoutInflater
 import android.widget.Toast
 import mkkcom.example.apptest.BaseActivity
 import mkkcom.example.apptest.R
-import mkkcom.example.apptest.databinding.ActivityTwoBinding
+import mkkcom.example.apptest.databinding.ActivityThreeBinding
 
-class TwoActivity : BaseTaskAndBackstackActivity<ActivityTwoBinding>() {
+class ThreeActivity :BaseTaskAndBackstackActivity<ActivityThreeBinding>() {
 
     companion object{
 
 
         fun getInstance(context: Context): Intent {
-            return Intent(context,  TwoActivity::class.java)
+            return Intent(context,  ThreeActivity::class.java)
         }
     }
 
-    override val pageTitle: String get() = "Activity Two"
+    override val pageTitle: String get() = "Activity Three"
 
-    override fun setupViewBinding(layoutInflater: LayoutInflater): ActivityTwoBinding {
-       return ActivityTwoBinding.inflate(layoutInflater)
+    override fun setupViewBinding(layoutInflater: LayoutInflater): ActivityThreeBinding {
+        return ActivityThreeBinding.inflate(layoutInflater)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,9 +38,8 @@ class TwoActivity : BaseTaskAndBackstackActivity<ActivityTwoBinding>() {
             menu.buttonActivityFour,
             menu.buttonActivityFive,
         )
-
-
     }
+
 
 
 

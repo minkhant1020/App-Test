@@ -10,7 +10,7 @@ import mkkcom.example.apptest.BaseActivity
 import mkkcom.example.apptest.R
 import mkkcom.example.apptest.databinding.ActivityOneBinding
 
-class OneActivity : BaseActivity<ActivityOneBinding>() {
+class OneActivity : BaseTaskAndBackstackActivity<ActivityOneBinding>() {
 
     companion object{
 
@@ -28,31 +28,23 @@ class OneActivity : BaseActivity<ActivityOneBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding.buttonActivityOne.setOnClickListener {
-            this.goOneActivity()
+        val menu= binding.menuLayout
 
-        }
-        binding.buttonActivityTwo.setOnClickListener {
-            this.goTwoActivity()
-        }
-    }
+        this.listenButtonClick(
+            menu.buttonActivityOne,
+            menu.buttonActivityTwo,
+            menu.buttonActivityThree,
+            menu.buttonActivityFour,
+            menu.buttonActivityFive,
+        )
 
-    override fun onNewIntent(intent: Intent?) {
-        super.onNewIntent(intent)
-        Toast.makeText(this, "on New Intent", Toast.LENGTH_LONG).show()
-    }
-    private fun goOneActivity(){
 
-        val intent= getInstance(this)
-        startActivity(intent)
+
 
     }
-    private fun goTwoActivity(){
 
-        val intent= TwoActivity.getInstance(this)
-        startActivity(intent)
 
-    }
+
 
 
 }

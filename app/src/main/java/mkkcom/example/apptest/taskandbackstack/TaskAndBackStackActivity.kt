@@ -10,7 +10,7 @@ import mkkcom.example.apptest.R
 import mkkcom.example.apptest.databinding.ActivityTaskAndBackStackBinding
 import mkkcom.example.apptest.lifecycle.LifecycleActivity
 
-class TaskAndBackStackActivity : BaseActivity<ActivityTaskAndBackStackBinding>() {
+class TaskAndBackStackActivity :BaseTaskAndBackstackActivity<ActivityTaskAndBackStackBinding>() {
 
     companion object{
 
@@ -27,27 +27,17 @@ class TaskAndBackStackActivity : BaseActivity<ActivityTaskAndBackStackBinding>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding.buttonActivityOne.setOnClickListener {
-            this.goOneActivity()
+        val menu= binding.menuLayout
 
-        }
-        binding.buttonActivityTwo.setOnClickListener {
-            this.goTwoActivity()
-        }
-
-    }
-
-    private fun goOneActivity(){
-
-        val intent= OneActivity.getInstance(this)
-        startActivity(intent)
+        this.listenButtonClick(
+            menu.buttonActivityOne,
+            menu.buttonActivityTwo,
+            menu.buttonActivityThree,
+            menu.buttonActivityFour,
+            menu.buttonActivityFive,
+        )
 
     }
-    private fun goTwoActivity(){
 
-        val intent= TwoActivity.getInstance(this)
-        startActivity(intent)
-
-    }
 
 }
