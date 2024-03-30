@@ -5,10 +5,13 @@
     <string name="activity_lifecycle">Activity Lifecycle</string>
     <string name="intent">Intent</string>
     <string name="task_and_back_stack">Task and Back Stack</string>
+    <string name="user_interface">User Interface</string>
+
 
     <string name="button_sent_custom_broadcast">Sent Custom Broadcast</string>
     <string name="button_open_link_in_browser">Open link in browser</string>
     <string name="button_call_phone">Call phone</string>
+    <string name="button_next">Next</string>
     <string name="button_share_content">Share content</string>
     <string name="button_open_in_map_view">Open in map view</string>
     <string name="button_take_picture">Take picture</string>
@@ -18,6 +21,21 @@
     <string name="button_activity_three_single_task">Activity Three(Single task)</string>
     <string name="button_activity_four_single_instance">Activity Four(Single Instance)</string>
     <string name="button_activity_five_flag_new_task">Activity Five(Flag new Task)</string>
+    <string name="button_activity_six_affinity">Activity Six(Affinity)</string>
+    <string name="button_finish">Finish</string>
+    <string name="button_basic_view">Basic View</string>
+    <string name="button_layout_activity">Layout Activity</string>
+    <string name="button_constraint_layout">Constraint Layout</string>
+    <string name="button_animate">Animate</string>
+    <string name="button_change_photo">Change Photo</string>
+
+    <string name="hint_value_one">Value One</string>
+    <string name="hint_value_two">Value Two</string>
+
+    <string name="label_result">Result</string>
+
+    <string name="affinity_caculation">"affinity.caculation"</string>
+
 
 
 </resources>

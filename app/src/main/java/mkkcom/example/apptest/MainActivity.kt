@@ -7,6 +7,7 @@ import mkkcom.example.apptest.databinding.ActivityMainBinding
 import mkkcom.example.apptest.intent.IntentActivity
 import mkkcom.example.apptest.lifecycle.LifecycleActivity
 import mkkcom.example.apptest.taskandbackstack.TaskAndBackStackActivity
+import mkkcom.example.apptest.userinterface.UserInterfaceActivity
 import java.util.Date
 
 class MainActivity : BaseActivity< ActivityMainBinding>() {
@@ -49,6 +50,9 @@ class MainActivity : BaseActivity< ActivityMainBinding>() {
             this.goToTaskAndBackStackActivity()
 
         }
+        binding.btnUserInterface.setOnClickListener {
+            this.goToUserInterface()
+        }
 
         //this.showcount()
 
@@ -80,6 +84,12 @@ class MainActivity : BaseActivity< ActivityMainBinding>() {
     private fun goToTaskAndBackStackActivity(){
 
         val intent= TaskAndBackStackActivity.getInstance(this)
+        startActivity(intent)
+
+    }
+    private fun goToUserInterface(){
+
+        val intent= UserInterfaceActivity.getInstance(this)
         startActivity(intent)
 
     }

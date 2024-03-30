@@ -35,6 +35,7 @@ class FourActivity : BaseTaskAndBackstackActivity<ActivityFourBinding>(){
             menu.buttonActivityThree,
             menu.buttonActivityFour,
             menu.buttonActivityFive,
+            menu.buttonActivitySix,
         )
 
     }
