@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
 import mkkcom.example.apptest.databinding.ActivityMainBinding
 
-abstract class BaseActivity <VB: ViewBinding> : AppCompatActivity() {
+abstract class BaseActivity<VB: ViewBinding>  : AppCompatActivity() {
 
     protected lateinit var binding: VB
     abstract val pageTitle: String

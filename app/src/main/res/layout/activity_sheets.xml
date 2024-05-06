@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".userinterface.SheetsActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+                <Button
+                    android:id="@+id/btn_show_standard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Standard Bottom Sheet"
+                    tools:ignore="HardcodedText" />
+                <Button
+                    android:id="@+id/btn_show_modal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Modal Bottom Sheet"
+                    tools:ignore="HardcodedText" />
+
+        </LinearLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/standard_bottom_sheet"
+            style="?attr/bottomSheetStyle"
+            android:layout_width="match_parent"
+            android:layout_height="628dp"
+            android:background="@android:color/holo_red_light"
+            android:maxHeight="500dp"
+            app:behavior_hideable="true"
+            app:behavior_peekHeight="0dp"
+
+            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

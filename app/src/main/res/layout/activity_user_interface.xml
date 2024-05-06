@@ -30,8 +30,48 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/button_constraint_layout"/>
-    </LinearLayout>
-    
+
+        <Button
+            android:id="@+id/btn_dialog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/button_dialog"/>
+
+        <Button
+            android:id="@+id/btn_ss_imageview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/button_ss_image_view"/>
+
+        <Button
+            android:id="@+id/btn_ss_dialog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SS Dialog"
+            tools:ignore="HardcodedText" />
+
+        <Button
+            android:id="@+id/btn_sheets"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/button_sheets" />
+
+        <Button
+            android:id="@+id/btn_fragments"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/button_fragments" />
+
+        <Button
+            android:id="@+id/btn_drawer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/button_drawer" />
+
+
+
+</LinearLayout>
+
 
 
 

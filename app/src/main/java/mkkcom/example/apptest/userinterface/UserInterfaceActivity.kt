@@ -36,6 +36,15 @@ class UserInterfaceActivity : BaseActivity<ActivityUserInterfaceBinding>() {
         binding.btnBasicView.setOnClickListener { this.goToBasicViewActivity() }
         binding.btnLayoutActivity.setOnClickListener { this.goToLayoutActivity() }
         binding.btnLayoutConstraintActivity.setOnClickListener { this.goToConstraintLayoutActivity() }
+        binding.btnDialog.setOnClickListener { this.goToDialogActivity() }
+        binding.btnSsImageview.setOnClickListener { this.goToSsImageView() }
+        binding.btnSheets.setOnClickListener { this.goToSheets()}
+        binding.btnFragments.setOnClickListener { this.goToFragments()}
+        binding.btnDrawer.setOnClickListener { this.goToDrawerActivity() }
+
+
+
+
     }
 
     private fun goToBasicViewActivity(){
@@ -56,6 +65,45 @@ class UserInterfaceActivity : BaseActivity<ActivityUserInterfaceBinding>() {
         startActivity(intent)
 
     }
+
+    private fun goToDialogActivity(){
+
+        val intent= DialogActivity.getInstance(this)
+        startActivity(intent)
+
+    }
+
+    private fun goToSsImageView(){
+
+        val intent= SSImageViewActivity.getInstance(this)
+        startActivity(intent)
+
+    }
+
+    private fun goToSheets(){
+
+        val intent= SheetsActivity.getInstance(this)
+        startActivity(intent)
+
+    }
+
+    private fun goToFragments(){
+
+        val intent= FragmentsDemoActivity.getInstance(this)
+        startActivity(intent)
+
+    }
+
+    private fun goToDrawerActivity(){
+
+        val intent=DrawerActivity .getInstance(this)
+        startActivity(intent)
+
+    }
+
+
+
+
 
 
 

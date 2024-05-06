@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group
+        android:id="@+id/group_main"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/all_mail"
+            android:checked="true"
+            android:icon="@drawable/ic_mail"
+            android:title="@string/menu_all_mail"/>
+
+        <item
+            android:id="@+id/inbox"
+            android:icon="@drawable/ic_inbox"
+            android:title="@string/menu_inbox"/>
+
+        <item
+            android:id="@+id/sent"
+            android:icon="@drawable/ic_sent"
+            android:title="@string/menu_sent"/>
+
+        <item
+            android:id="@+id/draft"
+            android:icon="@drawable/ic_draft"
+            android:title="@string/menu_draft"/>
+
+        <item
+            android:id="@+id/spam"
+            android:icon="@drawable/ic_spam"
+            android:title="@string/menu_spam"/>
+
+        <item
+            android:id="@+id/trash"
+            android:icon="@drawable/ic_trash"
+            android:title="@string/menu_trash"/>
+
+
+    </group>
+
+    <group
+        android:id="@+id/group_other"
+        android:checkableBehavior="single">
+        <item
+            android:title="@string/menu_title_other">
+            <menu>
+                <item
+                    android:id="@+id/settings"
+                    android:icon="@drawable/ic_setting"
+                    android:title="@string/menu_settings"/>
+
+                <item
+                    android:id="@+id/support"
+                    android:icon="@drawable/ic_support"
+                    android:title="@string/menu_support"/>
+
+                <item
+                    android:id="@+id/about_us"
+                    android:icon="@drawable/ic_about_us"
+                    android:title="@string/menu_about_us"/>
+
+            </menu>
+
+
+        </item>
+
+    </group>
+
+</menu>
