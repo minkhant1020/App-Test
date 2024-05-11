@@ -84,4 +84,5 @@ class LifecycleActivity : BaseActivity<ActivityLifecycleBinding>() {
         super.onRestoreInstanceState(savedInstanceState, persistentState)
         Log.d("TAG"," onRestoreInstanceState")
     }
+
       }

@@ -11,6 +11,7 @@ import mkkcom.example.apptest.databinding.ActivityMainBinding
 
 abstract class BaseActivity<VB: ViewBinding>  : AppCompatActivity() {
 
+
     protected lateinit var binding: VB
     abstract val pageTitle: String
     abstract fun setupViewBinding(layoutInflater: LayoutInflater): VB

@@ -70,12 +70,13 @@ class MenuFragment : BaseFragment<FragmentMenuBinding>() {
                 R.anim.slightly_slide_in_right, R.anim.slide_out_right)
 
 
-            .replace(R.id.container_one,fragment)
+            .replace(R.id.container_three,fragment)
             .addToBackStack(fragment.javaClass.name)
             .commit()
 
 
     }
+
 
 
 

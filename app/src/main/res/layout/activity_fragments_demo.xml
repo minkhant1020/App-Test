@@ -9,17 +9,7 @@
     tools:ignore="HardcodedText">
 
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/container_one"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/container_two"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/container_three"
