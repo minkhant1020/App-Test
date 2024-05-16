@@ -41,6 +41,8 @@ class UserInterfaceActivity : BaseActivity<ActivityUserInterfaceBinding>() {
         binding.btnSheets.setOnClickListener { this.goToSheets()}
         binding.btnFragments.setOnClickListener { this.goToFragments()}
         binding.btnDrawer.setOnClickListener { this.goToDrawerActivity() }
+        binding.btnViewPagerTab.setOnClickListener { this.goToViewPagerTabActivity() }
+        binding.btnTab.setOnClickListener { this.goToTabActivity() }
 
 
 
@@ -97,6 +99,19 @@ class UserInterfaceActivity : BaseActivity<ActivityUserInterfaceBinding>() {
     private fun goToDrawerActivity(){
 
         val intent=DrawerActivity .getInstance(this)
+        startActivity(intent)
+
+    }
+    private fun goToViewPagerTabActivity(){
+
+        val intent=TabViewPagerActivity .getInstance(this)
+        startActivity(intent)
+
+    }
+
+    private fun goToTabActivity(){
+
+        val intent=TabActivity .getInstance(this)
         startActivity(intent)
 
     }

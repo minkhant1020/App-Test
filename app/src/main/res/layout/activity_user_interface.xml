@@ -68,9 +68,22 @@
             android:layout_height="wrap_content"
             android:text="@string/button_drawer" />
 
+        <Button
+            android:id="@+id/btn_view_pager_tab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/button_view_pager_tab" />
+
+        <Button
+            android:id="@+id/btn_tab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/button_tab" />
 
 
-</LinearLayout>
+
+
+    </LinearLayout>
 
 
 
