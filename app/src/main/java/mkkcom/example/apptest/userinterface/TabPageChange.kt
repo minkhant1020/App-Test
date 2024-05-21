@@ -1,12 +1,12 @@
 package mkkcom.example.apptest.userinterface
 
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import mkkcom.example.apptest.userinterface.fragments.HomeFragment
-import mkkcom.example.apptest.userinterface.fragments.VideoFragment
+import mkkcom.example.apptest.userinterface.tag.HomeFragment
+import mkkcom.example.apptest.userinterface.tag.NotificationFragment
+import mkkcom.example.apptest.userinterface.tag.VideoFragment
 
 private const val NUM_TABS = 3
 

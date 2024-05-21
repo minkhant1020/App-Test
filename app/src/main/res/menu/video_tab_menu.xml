@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action"
+        android:checked="true"
+        android:title="@string/menu_action"/>
+    <item
+        android:id="@+id/comedy"
+        android:title="@string/menu_comedy"/>
+    <item
+        android:id="@+id/horror"
+        android:title="@string/menu_horror"/>
+    <item
+        android:id="@+id/drama"
+        android:title="@string/menu_drama"/>
+    <item
+        android:id="@+id/scifi"
+        android:title="@string/menu_scifi"/>
+
+
+</menu>

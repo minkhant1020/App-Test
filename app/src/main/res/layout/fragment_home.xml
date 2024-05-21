@@ -5,9 +5,29 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".userinterface.fragments.HomeFragment">
+    tools:context=".userinterface.tag.HomeFragment">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/btn_back"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="20dp"
+        android:background="?attr/selectableItemBackground"
+        app:cardCornerRadius="25dp"
+        app:cardBackgroundColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@id/child_container_2"
+        app:layout_constraintEnd_toEndOf="@id/child_container_2">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_home"
+            tools:ignore="ContentDescription"
+            android:layout_margin="10dp"/>
+
+    </androidx.cardview.widget.CardView>
 
     <TextView
+        android:id="@+id/tv_home"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
@@ -18,4 +38,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="HardcodedText" />
+
+
+    <Button
+        android:id="@+id/btn_child_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_home"
+        android:text="Go To Child Fragment "
+        tools:ignore="HardcodedText" />
+
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/child_container_2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+      app:layout_constraintTop_toBottomOf="@id/tv_home"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

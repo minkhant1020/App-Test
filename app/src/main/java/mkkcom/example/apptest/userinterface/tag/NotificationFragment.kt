@@ -1,4 +1,4 @@
-package mkkcom.example.apptest.userinterface
+package mkkcom.example.apptest.userinterface.tag
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
