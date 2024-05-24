@@ -14,7 +14,7 @@ import mkkcom.example.apptest.userinterface.fragments.Child2Fragment
 import mkkcom.example.apptest.userinterface.fragments.ChildFragment
 
 
-class HomeFragment : BaseFragment<FragmentHomeBinding>() {
+class HomeFragment : FirstLevelFragment<FragmentHomeBinding>() {
 
     companion object {
 

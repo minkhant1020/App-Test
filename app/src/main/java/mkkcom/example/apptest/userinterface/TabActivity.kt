@@ -2,22 +2,32 @@ package mkkcom.example.apptest.userinterface
 
 import android.content.Context
 import android.content.Intent
+import android.content.LocusId
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.Menu
+import androidx.activity.addCallback
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.google.android.material.tabs.TabLayout
 import mkkcom.example.apptest.BaseActivity
 import mkkcom.example.apptest.R
 import mkkcom.example.apptest.databinding.ActivityTabBinding
+import mkkcom.example.apptest.userinterface.fragments.BaseFragment
 import mkkcom.example.apptest.userinterface.fragments.ChildFragment
+import mkkcom.example.apptest.userinterface.fragments.SettingsFragment
+import mkkcom.example.apptest.userinterface.fragments.StepTwoFragment
 import mkkcom.example.apptest.userinterface.tag.ActionFragment
 import mkkcom.example.apptest.userinterface.tag.ComedyFragment
 import mkkcom.example.apptest.userinterface.tag.DramaFragment
+import mkkcom.example.apptest.userinterface.tag.FirstLevelFragment
 import mkkcom.example.apptest.userinterface.tag.HomeFragment
 import mkkcom.example.apptest.userinterface.tag.HorrorFragment
+import mkkcom.example.apptest.userinterface.tag.Language2Fragment
+import mkkcom.example.apptest.userinterface.tag.LanguageFragment
 import mkkcom.example.apptest.userinterface.tag.NotificationFragment
 import mkkcom.example.apptest.userinterface.tag.ScifiFragment
 import mkkcom.example.apptest.userinterface.tag.VideoFragment
@@ -39,6 +49,7 @@ class TabActivity : BaseActivity<ActivityTabBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        onBackPressedDispatcher.addCallback(this){ handleBackPress() }
         this.supportActionBar?.hide()
         this.setupTab()
     }
@@ -47,50 +58,37 @@ class TabActivity : BaseActivity<ActivityTabBinding>() {
     private val notificationFragment : NotificationFragment by lazy { NotificationFragment() }
 
     private fun setupTab(){
+        binding.bottomNavigation.menu.clear()
         Tab.entries.forEach {
-            val tabItem = binding.tabLayout.newTab()
+           /* val tabItem = binding.tabLayout.newTab()
             tabItem.tag = it
             tabItem.text = getString(it.title)
             tabItem.icon = AppCompatResources.getDrawable(this,it.icon)
-            binding.tabLayout.addTab(tabItem)
+            binding.tabLayout.addTab(tabItem)*/
+
+            binding.bottomNavigation.menu.add(
+                Menu.NONE,
+                it.id,
+                Menu.NONE,
+                it.title
+
+            ).icon = ResourcesCompat.getDrawable(resources,it.icon,null)
         }
-        binding.tabLayout.addOnTabSelectedListener(tabSelectedListener)
-        selectedTab = Tab.entries.get(binding.tabLayout.selectedTabPosition)
+       // binding.tabLayout.addOnTabSelectedListener(tabSelectedListener)
+        binding.bottomNavigation.setOnItemSelectedListener {
+            selectedTab = Tab.getTabByItemId(it.itemId)
+            true
+        }
+        selectedTab = Tab.entries.first()
 
     }
 
-    private val tabSelectedListener by lazy {
-        object : TabLayout.OnTabSelectedListener{
-            override fun onTabSelected(p0: TabLayout.Tab?) {
-                Log.d("TAG", "onTabSelected: ")
-
-                p0?.let {
-                    selectedTab = it.tag as Tab
-                }
-
-
-            }
-
-            override fun onTabUnselected(p0: TabLayout.Tab?) {
-
-
-            }
-
-            override fun onTabReselected(tab: TabLayout.Tab?) {
-                Log.d("TAG", "onTabReselected: ")
-                supportFragmentManager.popBackStack(
-                    ChildFragment::class.java.name,
-                    FragmentManager.POP_BACK_STACK_INCLUSIVE)
-            }
-
-        }
-
-    }
 
     private var selectedTab: Tab? = null
         set(value) {
 
             if (value==field || value == null) return
+            binding.bottomNavigation.menu.findItem(value.id).isChecked = true
             field?.let { hideFragment(getFragmentByTab(it)) }
             showFragment(getFragmentByTab(value))
             Log.d("TAG", "Set selectedTab: $value ")
@@ -103,7 +101,7 @@ class TabActivity : BaseActivity<ActivityTabBinding>() {
             return field
         }
 
-    private fun getFragmentByTab (tab: Tab): Fragment{
+    private fun getFragmentByTab (tab: Tab): FirstLevelFragment<*>{
         return when (tab){
             Tab.HOME -> homeFragment
             Tab.VIDEO -> videoFragment
@@ -121,7 +119,7 @@ class TabActivity : BaseActivity<ActivityTabBinding>() {
         } ?: run {
             supportFragmentManager
                 .beginTransaction()
-                .addToBackStack(fragment.javaClass.name)
+                //.addToBackStack(fragment.javaClass.name)
                 .add(R.id.container,fragment,fragment.javaClass.name)
                 .commit()
         }
@@ -135,11 +133,56 @@ class TabActivity : BaseActivity<ActivityTabBinding>() {
         }
     }
 
-    private enum class Tab (var title: Int,var icon: Int) {
+    private enum class Tab (var id: Int,var title: Int,var icon: Int) {
 
-        HOME (R.string.menu_home,R.drawable.ic_home),
-        VIDEO (R.string.menu_video,R.drawable.ic_video),
-        NOTIFICATION (R.string.menu_notification,R.drawable.ic_notification)
+        HOME (1,R.string.menu_home,R.drawable.ic_home),
+        VIDEO (2,R.string.menu_video,R.drawable.ic_video),
+        NOTIFICATION (3,R.string.menu_notification,R.drawable.ic_notification);
+        companion object{
+            fun getTabByItemId(itemId: Int): Tab?{
+                return Tab.entries.find { it.id == itemId }
+
+            }
+        }
+        /*val title = Tab.HOME.getTitleString(this)
+            fun getTitleString(context: Context): String{
+                return context.getString(title)
+            }
+*/
+    }
+    private fun handleBackPress() {
+        if (supportFragmentManager.popBackStackImmediate()) {
+            /** So it popped the dialog fragment back stack. */
+        } else if (popBackChildFragment()) {
+            /** So it popped the child fragment back stack. */
+        } else if (selectedTab != Tab.entries.first()) {
+            selectedTab = Tab.entries.first()
+        } else {
+            finish()
+        }
+    }
+
+    private fun popBackChildFragment(): Boolean {
+        return selectedTab?.let {
+            getFragmentByTab(it).let { firstLevelFrag ->
+                firstLevelFrag.isVisible && firstLevelFrag.onBackPressed()
+            }
+        } ?: false
+    }
+    fun navigateToLanguageSetting(){
+        selectedTab?.let {
+            (getFragmentByTab(it) ).showFragment(LanguageFragment())
+        }
+
+    }
+    fun navigateToLanguage2Setting(){
+        selectedTab?.let {
+            (getFragmentByTab(it) ).showFragment(Language2Fragment())
+        }
+
+    }
+    fun navigateBack(){
+        onBackPressedDispatcher.onBackPressed()
 
     }
 }

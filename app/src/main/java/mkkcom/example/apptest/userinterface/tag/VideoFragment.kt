@@ -16,7 +16,7 @@ import mkkcom.example.apptest.userinterface.fragments.BaseFragment
 import mkkcom.example.apptest.userinterface.fragments.ChildFragment
 
 
-class VideoFragment : BaseFragment<FragmentVideoBinding>() {
+class VideoFragment : FirstLevelFragment<FragmentVideoBinding>() {
     override fun setupViewBinding(
         Inflater: LayoutInflater,
         container: ViewGroup?,

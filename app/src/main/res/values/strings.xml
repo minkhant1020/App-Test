@@ -40,6 +40,7 @@
     <string name="button_drawer">Drawer</string>
     <string name="button_view_pager_tab">ViewPagerTab</string>
     <string name="button_tab">Tab</string>
+    <string name="button_change_language">Change Language</string>
 
     <string name="hint_value_one">Value One</string>
     <string name="hint_value_two">Value Two</string>

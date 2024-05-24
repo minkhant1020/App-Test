@@ -7,12 +7,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.RecyclerView.RecyclerListener
 import androidx.viewbinding.ViewBinding
+import mkkcom.example.apptest.R
+import mkkcom.example.apptest.databinding.FragmentNoTitleBinding
+import mkkcom.example.apptest.databinding.FragmentWithTitleBinding
+import mkkcom.example.apptest.userinterface.TabActivity
+import mkkcom.example.apptest.userinterface.tag.FirstLevelFragment
+import mkkcom.example.apptest.userinterface.tag.HomeFragment
+import mkkcom.example.apptest.userinterface.tag.NotificationFragment
+import mkkcom.example.apptest.userinterface.tag.VideoFragment
 
 abstract class BaseFragment<VB: ViewBinding>:Fragment() {
 
 
     protected lateinit var binding: VB
+    protected open var pageTitle: String? = null
     abstract fun setupViewBinding(
         Inflater: LayoutInflater,
         container: ViewGroup?,
@@ -33,36 +43,27 @@ abstract class BaseFragment<VB: ViewBinding>:Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = setupViewBinding(inflater, container, savedInstanceState)
-        return binding.root
+        if (this is FirstLevelFragment) {
+            val baseFragmentBinding = FragmentNoTitleBinding.inflate(inflater, container, false)
+            baseFragmentBinding.fragmentContainer.removeAllViews()
+            baseFragmentBinding.fragmentContainer.addView(binding.root)
+            return baseFragmentBinding.root
+        }else{
+            val baseFragmentBinding = FragmentWithTitleBinding.inflate(inflater, container, false)
+            baseFragmentBinding.fragmentContainer.removeAllViews()
+            baseFragmentBinding.fragmentContainer.addView(binding.root)
+            baseFragmentBinding.toolbar.title = pageTitle
+            baseFragmentBinding.toolbar.setNavigationIcon(R.drawable.ic_back_arrow)
+            baseFragmentBinding.toolbar.setNavigationOnClickListener {
+                (requireActivity() as? TabActivity)?.navigateBack()
+            }
+            return baseFragmentBinding.root
+        }
+
+
     }
 
-    override fun onStart() {
-        super.onStart()
-    }
 
-    override fun onResume() {
-        super.onResume()
-    }
-
-    override fun onPause() {
-        super.onPause()
-    }
-
-    override fun onStop() {
-        super.onStop()
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-    }
-
-    override fun onDetach() {
-        super.onDetach()
-    }
 }
 
 
