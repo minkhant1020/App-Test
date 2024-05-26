@@ -37,6 +37,12 @@
                 android:layout_height="wrap_content"
                 android:text="@string/button_change_language"/>
 
+            <Button
+                android:id="@+id/btn_about_us"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/button_about_us"/>
+
         </LinearLayout>
     </ScrollView>
 

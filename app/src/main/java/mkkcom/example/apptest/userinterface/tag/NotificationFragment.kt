@@ -25,6 +25,9 @@ class NotificationFragment : FirstLevelFragment<FragmentNotificationBinding>() {
         binding.btnLanguageChange.setOnClickListener {
             (requireActivity() as? TabActivity)?.navigateToLanguageSetting()
         }
+        binding.btnAboutUs.setOnClickListener {
+            (requireActivity() as? TabActivity)?.navigateToAboutUs()
+        }
     }
 
 }

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import mkkcom.example.apptest.R
 import mkkcom.example.apptest.databinding.FragmentLanguage2Binding
+import mkkcom.example.apptest.userinterface.TabActivity
 import mkkcom.example.apptest.userinterface.fragments.BaseFragment
 
 
@@ -19,6 +20,13 @@ class Language2Fragment : BaseFragment<FragmentLanguage2Binding>() {
         savedInstanceState: Bundle?,
     ): FragmentLanguage2Binding {
         return FragmentLanguage2Binding.inflate(Inflater,container,false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.btnBack.setOnClickListener {
+            (requireActivity() as? TabActivity)?.navigateBack(LanguageFragment::class.java.name)
+        }
     }
 
 

@@ -3,6 +3,7 @@ package mkkcom.example.apptest.userinterface
 import android.content.Context
 import android.content.Intent
 import android.content.LocusId
+import android.nfc.Tag
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -16,10 +17,12 @@ import com.google.android.material.tabs.TabLayout
 import mkkcom.example.apptest.BaseActivity
 import mkkcom.example.apptest.R
 import mkkcom.example.apptest.databinding.ActivityTabBinding
+import mkkcom.example.apptest.helper.showDialogFragment
 import mkkcom.example.apptest.userinterface.fragments.BaseFragment
 import mkkcom.example.apptest.userinterface.fragments.ChildFragment
 import mkkcom.example.apptest.userinterface.fragments.SettingsFragment
 import mkkcom.example.apptest.userinterface.fragments.StepTwoFragment
+import mkkcom.example.apptest.userinterface.tag.AboutUsFragment
 import mkkcom.example.apptest.userinterface.tag.ActionFragment
 import mkkcom.example.apptest.userinterface.tag.ComedyFragment
 import mkkcom.example.apptest.userinterface.tag.DramaFragment
@@ -78,6 +81,11 @@ class TabActivity : BaseActivity<ActivityTabBinding>() {
         binding.bottomNavigation.setOnItemSelectedListener {
             selectedTab = Tab.getTabByItemId(it.itemId)
             true
+        }
+        binding.bottomNavigation.setOnItemReselectedListener {
+            selectedTab?.let {
+                getFragmentByTab(it).clearBackstack()
+            }
         }
         selectedTab = Tab.entries.first()
 
@@ -151,7 +159,7 @@ class TabActivity : BaseActivity<ActivityTabBinding>() {
 */
     }
     private fun handleBackPress() {
-        if (supportFragmentManager.popBackStackImmediate()) {
+        if (popBackFragment()) {
             /** So it popped the dialog fragment back stack. */
         } else if (popBackChildFragment()) {
             /** So it popped the child fragment back stack. */
@@ -161,11 +169,20 @@ class TabActivity : BaseActivity<ActivityTabBinding>() {
             finish()
         }
     }
+    private fun popBackFragment(tag: String? = null): Boolean{
+        return tag?.let {
+            supportFragmentManager.popBackStackImmediate(
+                it,
+                FragmentManager.POP_BACK_STACK_INCLUSIVE)
+        } ?:run {
+            supportFragmentManager.popBackStackImmediate()
+        }
+    }
 
-    private fun popBackChildFragment(): Boolean {
+    private fun popBackChildFragment(tag: String? = null): Boolean {
         return selectedTab?.let {
             getFragmentByTab(it).let { firstLevelFrag ->
-                firstLevelFrag.isVisible && firstLevelFrag.onBackPressed()
+                firstLevelFrag.isVisible && firstLevelFrag.onBackPressed(tag)
             }
         } ?: false
     }
@@ -179,10 +196,21 @@ class TabActivity : BaseActivity<ActivityTabBinding>() {
         selectedTab?.let {
             (getFragmentByTab(it) ).showFragment(Language2Fragment())
         }
-
     }
-    fun navigateBack(){
-        onBackPressedDispatcher.onBackPressed()
+    fun navigateToAboutUs(){
+        this.showDialogFragment(AboutUsFragment())
+    }
+    fun navigateBack(tag: String? = null){
+        if (tag == null){
+            onBackPressedDispatcher.onBackPressed()
+        }else if (popBackFragment(tag)){
+            /** So it popped the dialog fragment back stack with tag. */
+        }else if (popBackChildFragment(tag)){
+            /** So it popped the child fragment back stack with tag. */
+        }else{
+            onBackPressedDispatcher.onBackPressed()
+        }
+
 
     }
 }
