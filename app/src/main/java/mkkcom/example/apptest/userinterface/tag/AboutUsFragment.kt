@@ -10,7 +10,7 @@ import mkkcom.example.apptest.databinding.FragmentAboutUsBinding
 import mkkcom.example.apptest.userinterface.fragments.BaseFragment
 
 
-class AboutUsFragment : BaseFragment<FragmentAboutUsBinding>() {
+class AboutUsFragment : FirstLevelFragment<FragmentAboutUsBinding>() {
     override fun setupViewBinding(
         Inflater: LayoutInflater,
         container: ViewGroup?,

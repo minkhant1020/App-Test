@@ -7,9 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import mkkcom.example.apptest.R
 import mkkcom.example.apptest.databinding.FragmentSentBinding
+import mkkcom.example.apptest.userinterface.tag.FirstLevelFragment
 
 
-class SentFragment : BaseFragment<FragmentSentBinding>() {
+class SentFragment : FirstLevelFragment<FragmentSentBinding>() {
 
     companion object{
 

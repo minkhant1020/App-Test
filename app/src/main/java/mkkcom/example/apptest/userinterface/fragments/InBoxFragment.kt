@@ -7,9 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import mkkcom.example.apptest.R
 import mkkcom.example.apptest.databinding.FragmentInBoxBinding
+import mkkcom.example.apptest.userinterface.tag.FirstLevelFragment
 
 
-class InBoxFragment : BaseFragment<FragmentInBoxBinding>() {
+class InBoxFragment : FirstLevelFragment<FragmentInBoxBinding>() {
 
     companion object{
 

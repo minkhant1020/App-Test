@@ -7,9 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import mkkcom.example.apptest.R
 import mkkcom.example.apptest.databinding.FragmentSettingsBinding
+import mkkcom.example.apptest.userinterface.tag.FirstLevelFragment
 
 
-class SettingsFragment : BaseFragment<FragmentSettingsBinding>() {
+class SettingsFragment : FirstLevelFragment<FragmentSettingsBinding>() {
 
     companion object{
 

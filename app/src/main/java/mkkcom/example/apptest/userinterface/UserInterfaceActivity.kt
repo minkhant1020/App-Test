@@ -43,6 +43,9 @@ class UserInterfaceActivity : BaseActivity<ActivityUserInterfaceBinding>() {
         binding.btnDrawer.setOnClickListener { this.goToDrawerActivity() }
         binding.btnViewPagerTab.setOnClickListener { this.goToViewPagerTabActivity() }
         binding.btnTab.setOnClickListener { this.goToTabActivity() }
+        binding.btnListView.setOnClickListener { this.goToListview() }
+        binding.btnRecyclerview.setOnClickListener { this.goToRecyclerview() }
+        binding.btnGrid.setOnClickListener { this.goToGridview() }
 
 
 
@@ -115,6 +118,23 @@ class UserInterfaceActivity : BaseActivity<ActivityUserInterfaceBinding>() {
         startActivity(intent)
 
     }
+    private fun goToListview() {
+        val intent = ListViewActivity.getInstance(this)
+        startActivity(intent)
+    }
+
+    private fun goToRecyclerview() {
+        val intent = RecyclerViewActivity.getInstance(this)
+        startActivity(intent)
+
+    }
+
+    private fun goToGridview() {
+        val intent = GridViewActivity.getInstance(this)
+        startActivity(intent)
+    }
+
+
 
 
 

@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import mkkcom.example.apptest.R
 import mkkcom.example.apptest.databinding.FragmentAllEmailBinding
 
+import mkkcom.example.apptest.userinterface.tag.FirstLevelFragment
+
 
 class AllEmailFragment : BaseFragment<FragmentAllEmailBinding>() {
 

@@ -7,9 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import mkkcom.example.apptest.R
 import mkkcom.example.apptest.databinding.FragmentSupportBinding
+import mkkcom.example.apptest.userinterface.tag.FirstLevelFragment
 
 
-class SupportFragment : BaseFragment<FragmentSupportBinding>() {
+class SupportFragment : FirstLevelFragment<FragmentSupportBinding>() {
     companion object{
 
         fun getInstance():SupportFragment{

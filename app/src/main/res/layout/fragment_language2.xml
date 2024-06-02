@@ -6,6 +6,17 @@
     android:orientation="vertical"
     tools:context=".userinterface.tag.Language2Fragment">
 
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/sky"
+        android:layout_marginHorizontal="20dp"
+        tools:ignore="ContentDescription" />
+
     <Button
         android:id="@+id/btn_back"
         android:layout_width="match_parent"

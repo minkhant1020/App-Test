@@ -7,9 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import mkkcom.example.apptest.R
 import mkkcom.example.apptest.databinding.FragmentSpamBinding
+import mkkcom.example.apptest.userinterface.tag.FirstLevelFragment
 
 
-class SpamFragment : BaseFragment<FragmentSpamBinding>() {
+class SpamFragment : FirstLevelFragment<FragmentSpamBinding>() {
 
     companion object{
 

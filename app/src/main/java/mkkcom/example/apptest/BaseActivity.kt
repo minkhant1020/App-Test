@@ -41,5 +41,6 @@ abstract class BaseActivity<VB: ViewBinding>  : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    
+
+
 }

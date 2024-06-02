@@ -18,7 +18,7 @@ abstract class FirstLevelFragment<VB: ViewBinding>: BaseFragment<VB>() {
         val transaction = childFragmentManager.beginTransaction().apply {
             if (addToBackStack) { addToBackStack(fragment.javaClass.name) }
             animation?.let {
-                setCustomAnimations(it.enter,it.exit,it.popEnder,it.popExit)
+                setCustomAnimations(it.enter,it.exit,it.popEnter,it.popExit)
             }
         }
         if (replace) {
