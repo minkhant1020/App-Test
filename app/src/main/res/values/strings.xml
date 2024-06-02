@@ -42,6 +42,9 @@
     <string name="button_tab">Tab</string>
     <string name="button_change_language">Change Language</string>
     <string name="button_about_us">About Us</string>
+    <string name="button_list_view">List View</string>
+    <string name="button_recycler_view">Recycler View</string>
+    <string name="button_grid_view">Grid View</string>
 
 
     <string name="hint_value_one">Value One</string>
