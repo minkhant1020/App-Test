@@ -1,2 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="label_localized_string">၎င်းသည် ဒေသစံသတ်မှတ်ထားသော စာကြောင်းတစ်ခုဖြစ်သည်။</string>
+</resources>

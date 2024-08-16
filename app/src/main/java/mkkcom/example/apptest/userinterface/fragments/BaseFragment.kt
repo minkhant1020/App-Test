@@ -12,6 +12,7 @@ import androidx.viewbinding.ViewBinding
 import mkkcom.example.apptest.R
 import mkkcom.example.apptest.databinding.FragmentNoTitleBinding
 import mkkcom.example.apptest.databinding.FragmentWithTitleBinding
+import mkkcom.example.apptest.helper.NoTitleBar
 import mkkcom.example.apptest.userinterface.TabActivity
 import mkkcom.example.apptest.userinterface.tag.FirstLevelFragment
 import mkkcom.example.apptest.userinterface.tag.HomeFragment
@@ -43,7 +44,7 @@ abstract class BaseFragment<VB: ViewBinding>:Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = setupViewBinding(inflater, container, savedInstanceState)
-        if (this is FirstLevelFragment) {
+        if (this is FirstLevelFragment || this is NoTitleBar) {
             val baseFragmentBinding = FragmentNoTitleBinding.inflate(inflater, container, false)
             baseFragmentBinding.fragmentContainer.removeAllViews()
             baseFragmentBinding.fragmentContainer.addView(binding.root)

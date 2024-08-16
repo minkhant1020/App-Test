@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
+import androidx.activity.addCallback
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import mkkcom.example.apptest.BaseActivity
@@ -43,9 +44,11 @@ class DrawerActivity : BaseActivity<ActivityDrawerBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        
 
 
         this.supportActionBar?.hide()
+        onBackPressedDispatcher.addCallback(this){ handleOnBackPressed() }
         binding.btnOpen.setOnClickListener {
             binding.drawerLayout.open()
             this.setupDrawer()
@@ -90,6 +93,7 @@ class DrawerActivity : BaseActivity<ActivityDrawerBinding>() {
             selectedTab = Drawer.getTabByItemId(it.itemId)
             true
         }
+        
         selectedTab = Drawer.entries.first()
     }
 
@@ -122,6 +126,7 @@ class DrawerActivity : BaseActivity<ActivityDrawerBinding>() {
             Drawer.SUPPORT -> supportFragment
             Drawer.ABOUT_US -> aboutUsFragment
         }
+
     }
 
     private fun showFragment(fragment: Fragment) {

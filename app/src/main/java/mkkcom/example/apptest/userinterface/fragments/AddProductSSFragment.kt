@@ -1,60 +1,111 @@
 package mkkcom.example.apptest.userinterface.fragments
 
+import android.os.AsyncTask
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import mkkcom.example.apptest.R
+import mkkcom.example.apptest.database.DataBaseSSActivity
+import mkkcom.example.apptest.database.DatabaseActivity
+import mkkcom.example.apptest.database.entity.Product
+import mkkcom.example.apptest.databinding.FragmentAddProductBinding
+import mkkcom.example.apptest.databinding.FragmentAddProductSSBinding
+import mkkcom.example.apptest.helper.MyApp
+import kotlin.random.Random
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [AddProductSSFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class AddProductSSFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+class AddProductSSFragment : BaseFragment<FragmentAddProductSSBinding>() {
+
+    companion object {
+        const val PRODUCT = "isEditMode"
+        fun getInstance(product: Product? = null): AddProductFragment {
+            val fragment = AddProductFragment()
+            val bundle = Bundle()
+            //bundle.putParcelable(PRODUCT,product)
+            bundle.putSerializable(PRODUCT,product)
+            fragment.arguments = bundle
+            return fragment
+        }
+    }
+    private var editProduct: Product? = null
+    override fun setupViewBinding(
+        Inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?,
+    ): FragmentAddProductSSBinding {
+        return FragmentAddProductSSBinding.inflate(Inflater,container,false)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+        editProduct =arguments?.getSerializable(PRODUCT) as? Product
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        this.editProduct?.let {
+            binding.edtProductName.setText(it.name)
+            binding.edtProductDesc.setText(it.description)
         }
-    }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add_product_s_s, container, false)
-    }
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment AddProductSSFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            AddProductSSFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+        binding.btnInsertProduct.text = if (editProduct != null )"Update" else "Add"
+        binding.btnInsertProduct.setOnClickListener {
+            if (editProduct != null){
+                updateProduct()
+            }else{
+                addProduct()
             }
+             }
     }
+
+     private fun addProduct() {
+         val name = binding.edtProductName.text.toString()
+         val desc = binding.edtProductDesc.text.toString()
+        val price = Random.nextInt(500, 1000).toDouble()
+        val brand = "My Brand"
+
+         val product = Product(
+             id = 0,
+             name = name,
+             description = desc,
+             price = price,
+             brand = brand
+         )
+
+
+
+        AsyncTask.execute {
+            (requireActivity().application as MyApp).db.productDao().insert(product)
+            requireActivity().runOnUiThread { parentFragmentManager.popBackStackImmediate() }
+            (requireActivity() as? DataBaseSSActivity)?.refreshAdapterForNewProduct(product)
+        }
+
+    }
+
+    private fun updateProduct(){
+
+        val name = binding.edtProductName.text.toString()
+        val desc = binding.edtProductDesc.text.toString()
+
+        val product = Product(
+            id = editProduct!!.id,
+            name = name,
+            description = desc,
+            price = editProduct!!.price,
+            brand = editProduct!!.brand
+        )
+
+        AsyncTask.execute {
+            (requireActivity().application as MyApp).db.productDao().update(product)
+            requireActivity().runOnUiThread { parentFragmentManager.popBackStackImmediate() }
+            (requireActivity() as? DataBaseSSActivity)?.refreshAdapterForUpdatedProduct(product)
+        }
+
+    }
+
+
+
 }

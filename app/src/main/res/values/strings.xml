@@ -6,7 +6,10 @@
     <string name="intent">Intent</string>
     <string name="task_and_back_stack">Task and Back Stack</string>
     <string name="user_interface">User Interface</string>
-
+    <string name="resources">Resources</string>
+    <string name="share_preference">Share Preference</string>
+    <string name="database">Database</string>
+    <string name="database_ss">Database SS</string>
 
     <string name="button_sent_custom_broadcast">Sent Custom Broadcast</string>
     <string name="button_open_link_in_browser">Open link in browser</string>
@@ -45,12 +48,19 @@
     <string name="button_list_view">List View</string>
     <string name="button_recycler_view">Recycler View</string>
     <string name="button_grid_view">Grid View</string>
+    <string name="button_change_theme">Change Theme</string>
+    <string name="button_save">Save</string>
 
 
     <string name="hint_value_one">Value One</string>
     <string name="hint_value_two">Value Two</string>
 
     <string name="label_result">Result</string>
+    <string name="label_resource_subtitle">Android resource will be testing in this page</string>
+    <string name="label_string_resources">String Resources</string>
+    <string name="label_dynamic_string">Mg Mg has %d %s and %d %s.</string>
+    <string name="label_localized_string">This is a localized string</string>
+
 
     <string name="affinity_caculation">"affinity.caculation"</string>
     <!-- TODO: Remove or change this placeholder text -->
@@ -80,6 +90,9 @@
     <string name="menu_drama">Drama</string>
     <string name="menu_horror">Horror</string>
     <string name="menu_scifi">Scifi</string>
+
+    <string name="menu_delete">Delete</string>
+    <string name="menu_edit">Edit</string>
 
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>

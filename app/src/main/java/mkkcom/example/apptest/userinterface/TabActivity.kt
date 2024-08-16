@@ -2,37 +2,24 @@ package mkkcom.example.apptest.userinterface
 
 import android.content.Context
 import android.content.Intent
-import android.content.LocusId
-import android.nfc.Tag
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
 import androidx.activity.addCallback
-import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import com.google.android.material.tabs.TabLayout
 import mkkcom.example.apptest.BaseActivity
 import mkkcom.example.apptest.R
 import mkkcom.example.apptest.databinding.ActivityTabBinding
 import mkkcom.example.apptest.helper.showDialogFragment
-import mkkcom.example.apptest.userinterface.fragments.BaseFragment
-import mkkcom.example.apptest.userinterface.fragments.ChildFragment
-import mkkcom.example.apptest.userinterface.fragments.SettingsFragment
-import mkkcom.example.apptest.userinterface.fragments.StepTwoFragment
 import mkkcom.example.apptest.userinterface.tag.AboutUsFragment
-import mkkcom.example.apptest.userinterface.tag.ActionFragment
-import mkkcom.example.apptest.userinterface.tag.ComedyFragment
-import mkkcom.example.apptest.userinterface.tag.DramaFragment
 import mkkcom.example.apptest.userinterface.tag.FirstLevelFragment
 import mkkcom.example.apptest.userinterface.tag.HomeFragment
-import mkkcom.example.apptest.userinterface.tag.HorrorFragment
 import mkkcom.example.apptest.userinterface.tag.Language2Fragment
 import mkkcom.example.apptest.userinterface.tag.LanguageFragment
 import mkkcom.example.apptest.userinterface.tag.NotificationFragment
-import mkkcom.example.apptest.userinterface.tag.ScifiFragment
 import mkkcom.example.apptest.userinterface.tag.VideoFragment
 
 class TabActivity : BaseActivity<ActivityTabBinding>() {

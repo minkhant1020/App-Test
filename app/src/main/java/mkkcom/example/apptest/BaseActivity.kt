@@ -7,6 +7,7 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
+import mkkcom.example.apptest.database.entity.ProductSS
 import mkkcom.example.apptest.databinding.ActivityMainBinding
 
 abstract class BaseActivity<VB: ViewBinding>  : AppCompatActivity() {

@@ -1,3 +1,24 @@
 package mkkcom.example.apptest.database.entity
 
-data class ProductSS()
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "productSS")
+data class ProductSS(
+    @PrimaryKey(autoGenerate = true)
+    val id: Int,
+
+    @ColumnInfo(name = "name")
+    val name:String,
+
+    @ColumnInfo(name = "description")
+    val description: String,
+
+    @ColumnInfo(name = "price")
+    val price: Double,
+
+    @ColumnInfo(name = "brand")
+    val brand: String,
+
+    )

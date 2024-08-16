@@ -2,8 +2,21 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.AppTest" parent="Theme.Material3.DayNight">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+       <item name="colorPrimary">@color/blue_sky</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">true</item>
+
     </style>
 
-    <style name="Theme.AppTest" parent="Base.Theme.AppTest" />
+
+
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight">
+        <!-- Customize default theme attributes here -->
+    </style>
+
+
+
+
+
+
 </resources>

@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <attr name="mainFont" format="reference"/>
+    <attr name="secondaryFont" format="reference"/>
 </resources>
