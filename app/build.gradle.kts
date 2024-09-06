@@ -2,6 +2,9 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("com.google.devtools.ksp")
+    //id("kotlin-ksp")
+    id("com.google.dagger.hilt.android")
+
 }
 
 android {
@@ -44,6 +47,9 @@ android {
     buildFeatures{
         viewBinding=true
     }
+    /*composeOptions{
+        kotlinCompilerExtensionVersion = "1.5.11"
+    }*/
 }
 
 dependencies {
@@ -72,5 +78,21 @@ dependencies {
     implementation("androidx.room:room-paging:$roomVersion")
 
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.2.0-alpha01")
+
+    // define a BOM and its version
+    implementation(platform("com.squareup.okhttp3:okhttp-bom:4.12.0"))
+
+    // define any required OkHttp artifacts without version
+    implementation("com.squareup.okhttp3:okhttp")
+    implementation("com.squareup.okhttp3:logging-interceptor")
+
+    implementation("com.google.code.gson:gson:2.10.1")
+    implementation("com.github.bumptech.glide:glide:4.13.2")
+
+    implementation("com.google.dagger:hilt-android:2.52")
+    ksp("com.google.dagger:hilt-android-compiler:2.52")
+
+    implementation ("io.insert-koin:koin-android:3.5.6")
+
 
 }

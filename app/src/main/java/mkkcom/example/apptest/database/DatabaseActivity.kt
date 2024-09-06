@@ -27,12 +27,16 @@ import mkkcom.example.apptest.helper.ScreenAnimation
 import mkkcom.example.apptest.helper.showDialogFragment
 import mkkcom.example.apptest.helper.showToast
 import mkkcom.example.apptest.userinterface.fragments.AddProductFragment
+import org.koin.android.ext.android.get
+import org.koin.android.ext.android.inject
 
 class DatabaseActivity : BaseActivity<ActivityDatabaseBinding>() {
 
-
-    private val db by lazy { (application as MyApp).db }
+    private val initDatabase : MyDatabase = get()
+   // private val db by lazy { (application as MyApp).dp }
     private val adapter = MyAdapter(this::onClickEdit, this::onClickDelete)
+
+
     companion object {
         fun getInstance(context: Context): Intent {
             return Intent(context, DatabaseActivity::class.java)
@@ -66,7 +70,7 @@ class DatabaseActivity : BaseActivity<ActivityDatabaseBinding>() {
 
         private fun getProducts() {
             AsyncTask.execute {
-                val products = this.db.productDao().getProductsByMaxPrice(price = 1000.0)
+                val products = this.initDatabase.productDao().getProductsByMaxPrice(price = 1000.0)
                 runOnUiThread {
 
                     adapter.setNewData(products)
@@ -77,7 +81,7 @@ class DatabaseActivity : BaseActivity<ActivityDatabaseBinding>() {
 
             private fun deleteProduct(product: Product) {
                 AsyncTask.execute {
-                    this.db.productDao().delete(product)
+                    this.initDatabase.productDao().delete(product)
                     runOnUiThread {
                         adapter.removeItem(product)
                         showToast("Product deleted")

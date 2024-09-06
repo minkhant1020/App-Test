@@ -13,6 +13,7 @@ import mkkcom.example.apptest.database.DatabaseActivity
 import mkkcom.example.apptest.database.MyDatabase
 import mkkcom.example.apptest.database.MyDatabaseSS
 import mkkcom.example.apptest.database.ProductViewModel
+import mkkcom.example.apptest.database.entity.Category
 import mkkcom.example.apptest.database.entity.Product
 import mkkcom.example.apptest.database.entity.ProductSS
 import mkkcom.example.apptest.databinding.FragmentAddProductBinding
@@ -21,11 +22,13 @@ import mkkcom.example.apptest.helper.NoTitleBar
 import mkkcom.example.apptest.helper.showToast
 import mkkcom.example.apptest.taskandbackstack.FiveActivity
 import mkkcom.example.apptest.userinterface.tag.FirstLevelFragment
+import org.koin.android.ext.android.get
+import org.koin.android.ext.android.inject
 import kotlin.random.Random
 
 
 class AddProductFragment : BaseFragment<FragmentAddProductBinding>(),NoTitleBar{
-
+   private val initDatabase: MyDatabase = get()
 
 
     companion object {
@@ -81,6 +84,7 @@ class AddProductFragment : BaseFragment<FragmentAddProductBinding>(),NoTitleBar{
         }
 
         private fun addProduct() {
+
             val name = binding.edtProductName.text.toString()
             val desc = binding.edtProductDesc.text.toString()
             val price = Random.nextInt(500, 1000).toDouble()
@@ -93,7 +97,9 @@ class AddProductFragment : BaseFragment<FragmentAddProductBinding>(),NoTitleBar{
                 brand = brand
             )
             AsyncTask.execute {
-                (requireActivity().application as MyApp).db.productDao().insert(product)
+
+
+                this.initDatabase.productDao().insert(product)
                 requireActivity().runOnUiThread { parentFragmentManager.popBackStackImmediate() }
 
                 (requireActivity() as? DatabaseActivity)?.refreshAdapterForNewProduct(product)
@@ -114,7 +120,7 @@ class AddProductFragment : BaseFragment<FragmentAddProductBinding>(),NoTitleBar{
             )
 
             AsyncTask.execute {
-                (requireActivity().application as MyApp).db.productDao().update(product)
+                this.initDatabase.productDao().update(product)
                 requireActivity().runOnUiThread { parentFragmentManager.popBackStackImmediate() }
                 (requireActivity() as? DatabaseActivity)?.refreshAdapterForUpdatedProduct(product)
             }

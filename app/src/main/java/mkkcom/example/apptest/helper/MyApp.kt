@@ -1,29 +1,33 @@
 package mkkcom.example.apptest.helper
 
 import android.app.Application
+import androidx.compose.ui.unit.Dp
 import androidx.room.Room
 import androidx.room.migration.Migration
+import dagger.hilt.android.HiltAndroidApp
 import mkkcom.example.apptest.database.DatabaseConfigs
 import mkkcom.example.apptest.database.MyDatabase
 import mkkcom.example.apptest.database.migration.Migration1to2
+import mkkcom.example.apptest.di.koin.dataBaseModule
+import mkkcom.example.apptest.di.koin.initDatabase
+import org.koin.android.ext.android.get
+import org.koin.android.ext.android.inject
+import org.koin.android.ext.koin.androidContext
+import org.koin.core.context.startKoin
 
+//@HiltAndroidApp
 class MyApp : Application() {
 
-     lateinit var db: MyDatabase
+//lateinit var initDatabase: MyDatabase
 
     override fun onCreate() {
         super.onCreate()
-        this.initDatabase()
+       startKoin {
+           androidContext(this@MyApp)
+           modules(dataBaseModule)
+       }
     }
 
-    private fun initDatabase(){
-        this.db = Room.databaseBuilder(
-            applicationContext,
-            MyDatabase::class.java,
-            DatabaseConfigs.DATABASE_NAME
-        )
-            .addMigrations(Migration1to2())
-            .allowMainThreadQueries()
-            .build()
-    }
+
+
 }
