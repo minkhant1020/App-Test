@@ -94,5 +94,7 @@ dependencies {
 
     implementation ("io.insert-koin:koin-android:3.5.6")
 
+    implementation("org.greenrobot:eventbus:3.3.1")
+
 
 }
