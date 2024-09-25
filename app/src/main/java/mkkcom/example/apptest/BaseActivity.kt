@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
 import dagger.hilt.android.AndroidEntryPoint
+import io.reactivex.rxjava3.disposables.CompositeDisposable
 import mkkcom.example.apptest.database.entity.ProductSS
 import mkkcom.example.apptest.databinding.ActivityMainBinding
 import mkkcom.example.apptest.helper.AirplaneModeChange
@@ -23,6 +24,8 @@ abstract class BaseActivity<VB: ViewBinding>  : AppCompatActivity() {
     protected lateinit var binding: VB
     abstract val pageTitle: String
     abstract fun setupViewBinding(layoutInflater: LayoutInflater): VB
+
+    val disposable by lazy { CompositeDisposable() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,11 +45,12 @@ abstract class BaseActivity<VB: ViewBinding>  : AppCompatActivity() {
     override fun onStop() {
         super.onStop()
         EventBus.getDefault().unregister(this)
+        disposable.clear()
     }
-    override fun onNewIntent(intent: Intent?) {
+   /* override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
         Toast.makeText(this, "on New Intent", Toast.LENGTH_LONG).show()
-    }
+    }*/
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId){
